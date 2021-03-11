@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import React from "react";
+import { GoTo } from "../common/GoTo";
 import { SignOut } from "./SignOut";
 
 interface Props {
@@ -11,6 +12,7 @@ export const Home: React.FC<Props> = ({ auth }) => {
 		<div>
 			<h1>Inspy</h1>
 			<SignOut auth={auth} />
+			<GoTo redirectTo="/ideas" name="Ideas" />
 		</div>
 	);
 };

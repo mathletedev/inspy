@@ -5,12 +5,14 @@ import { useState } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { firebaseConfig } from "./config.json";
 import { Home } from "./home/Home";
+import { Ideas } from "./ideas/Ideas";
 import { Landing } from "./landing/Landing";
 import { PrivateRoute } from "./utils/PrivateRoute";
 
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
+const firestore = firebase.firestore();
 
 export default () => {
 	const [user, setUser] = useState<firebase.User | null | undefined>(undefined);
@@ -30,6 +32,14 @@ export default () => {
 					path="/"
 					exact
 					render={() => user && <Home auth={auth} />}
+				/>
+				<PrivateRoute
+					isLoggedIn={!!user}
+					path="/ideas"
+					exact
+					render={() =>
+						user && <Ideas auth={auth} firestore={firestore} user={user} />
+					}
 				/>
 				<Route
 					path="/login"

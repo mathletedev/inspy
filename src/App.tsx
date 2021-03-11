@@ -3,9 +3,9 @@ import "firebase/auth";
 import "firebase/firestore";
 import { useState } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import { Home } from "./components/Home";
-import { Landing } from "./components/Landing";
 import { firebaseConfig } from "./config.json";
+import { Home } from "./home/Home";
+import { Landing } from "./landing/Landing";
 import { PrivateRoute } from "./utils/PrivateRoute";
 
 firebase.initializeApp(firebaseConfig);

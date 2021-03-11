@@ -1,16 +1,16 @@
 import firebase from "firebase/app";
 import React from "react";
-import { SignIn } from "../utils/SignIn";
+import { SignOut } from "./SignOut";
 
 interface Props {
 	auth: firebase.auth.Auth;
 }
 
-export const Landing: React.FC<Props> = ({ auth }) => {
+export const Home: React.FC<Props> = ({ auth }) => {
 	return (
 		<div>
 			<h1>Inspy</h1>
-			<SignIn auth={auth} />
+			<SignOut auth={auth} />
 		</div>
 	);
 };

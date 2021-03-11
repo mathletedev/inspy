@@ -1,0 +1,11 @@
+{
+	"firebaseConfig": {
+		"apiKey": "AIzaSyBTU4PSbqKkzfD1q_4YSP_b6S3lZCz1ERw",
+		"authDomain": "inspy-app.firebaseapp.com",
+		"projectId": "inspy-app",
+		"storageBucket": "inspy-app.appspot.com",
+		"messagingSenderId": "367686974674",
+		"appId": "1:367686974674:web:102f2d113a2da0e486010b",
+		"measurementId": "G-L5QFLFQE0Q"
+	}
+}

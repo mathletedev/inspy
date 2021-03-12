@@ -32,7 +32,9 @@ export default () => {
 					isLoggedIn={!!user}
 					path="/"
 					exact
-					render={() => user && <Home auth={auth} />}
+					render={() =>
+						user && <Home auth={auth} firestore={firestore} user={user} />
+					}
 				/>
 				<PrivateRoute
 					isLoggedIn={!!user}

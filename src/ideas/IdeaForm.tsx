@@ -18,7 +18,8 @@ export const IdeaForm: React.FC<Props> = ({ firestore, user }) => {
 			time: firebase.firestore.FieldValue.serverTimestamp(),
 			title: formValue.title,
 			description: formValue.description,
-			likes: 0,
+			likes: [],
+			likeCount: 0,
 			public: false
 		});
 

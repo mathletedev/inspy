@@ -1,16 +1,19 @@
 import firebase from "firebase/app";
 import React from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { Idea } from "../common/Idea";
+import { PublicIdea } from "../common/PublicIdea";
 
 interface Props {
 	firestore: firebase.firestore.Firestore;
 	user: firebase.User;
 }
 
-export const IdeaList: React.FC<Props> = ({ firestore, user }) => {
+export const PublicList: React.FC<Props> = ({ firestore, user }) => {
 	const ideasRef = firestore.collection("ideas");
-	const query = ideasRef.where("author", "==", user.uid).orderBy("time");
+	const query = ideasRef
+		.where("public", "==", true)
+		.orderBy("likeCount")
+		.limit(10);
 
 	const [ideas] = useCollectionData(query, { idField: "id" });
 
@@ -18,11 +21,11 @@ export const IdeaList: React.FC<Props> = ({ firestore, user }) => {
 		<div>
 			{ideas &&
 				ideas.map((idea) => (
-					<Idea
+					<PublicIdea
 						key={idea.id}
 						firestore={firestore}
 						idea={idea}
-						onDisplay={false}
+						user={user}
 					/>
 				))}
 		</div>

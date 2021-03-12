@@ -13,6 +13,7 @@ export const Home: React.FC<Props> = ({ auth }) => {
 			<h1>Inspy</h1>
 			<SignOut auth={auth} />
 			<GoTo redirectTo="/ideas" name="Ideas" />
+			<GoTo redirectTo="/posts" name="Posts" />
 		</div>
 	);
 };

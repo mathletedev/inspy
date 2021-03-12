@@ -13,11 +13,9 @@ interface Props {
 export const Ideas: React.FC<Props> = ({ auth, firestore, user }) => {
 	return (
 		<div>
-			<div>
-				<GoTo redirectTo="/" name="Home" />
-				<IdeaList firestore={firestore} user={user} />
-				<IdeaForm firestore={firestore} user={user} />
-			</div>
+			<GoTo redirectTo="/" name="Home" />
+			<IdeaList firestore={firestore} user={user} />
+			<IdeaForm firestore={firestore} user={user} />
 		</div>
 	);
 };

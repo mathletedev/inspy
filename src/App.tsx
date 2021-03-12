@@ -7,6 +7,7 @@ import { firebaseConfig } from "./config.json";
 import { Home } from "./home/Home";
 import { Ideas } from "./ideas/Ideas";
 import { Landing } from "./landing/Landing";
+import { Posts } from "./posts/Posts";
 import { PrivateRoute } from "./utils/PrivateRoute";
 
 firebase.initializeApp(firebaseConfig);
@@ -41,12 +42,18 @@ export default () => {
 						user && <Ideas auth={auth} firestore={firestore} user={user} />
 					}
 				/>
+				<PrivateRoute
+					isLoggedIn={!!user}
+					path="/posts"
+					exact
+					render={() => user && <Posts firestore={firestore} user={user} />}
+				/>
 				<Route
 					path="/login"
 					exact
 					render={() => (user ? <Redirect to="/" /> : <Landing auth={auth} />)}
 				/>
-				<Route path="/" render={() => <div>404 Page Not Found</div>} />
+				<Route path="/" render={() => <div>404: Page Not Found</div>} />
 			</Switch>
 		</BrowserRouter>
 	);

@@ -13,12 +13,13 @@ export const PublicIdea: React.FC<Props> = ({ firestore, idea, user }) => {
 
 	const toggleLike = () => {
 		const ideaDoc = ideasRef.doc(idea.id);
-		const hasLiked = idea.likes.includes(user.uid);
+		const newLikes = idea.likes.includes(user.uid)
+			? idea.likes.filter((like: string) => like !== user.uid)
+			: [...idea.likes, user.uid];
+
 		ideaDoc.update({
-			likes: hasLiked
-				? idea.likes.filter((like: string) => like !== user.uid)
-				: [...idea.likes, user.uid],
-			likeCount: idea.likes.length + (hasLiked ? 1 : -1)
+			likes: newLikes,
+			likeCount: newLikes.length
 		});
 	};
 

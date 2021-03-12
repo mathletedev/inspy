@@ -12,7 +12,7 @@ export const PublicList: React.FC<Props> = ({ firestore, user }) => {
 	const ideasRef = firestore.collection("ideas");
 	const query = ideasRef
 		.where("public", "==", true)
-		.orderBy("likeCount")
+		.orderBy("likeCount", "desc")
 		.limit(10);
 
 	const [ideas] = useCollectionData(query, { idField: "id" });
